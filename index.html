@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Plants vs Zombies</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav>
+      <span id="logo">Plants vs Zombies</span>
+      <div class="status">
+        <div>Life ❤️ <span id="lifecount">100</span></div>
+        <div>Sun Flowers 🌻 <span id="flowercount">0</span></div>
+        <div>SunEnergy ☀️ <span id="suncount">15</span></div>
+        <div>Time elapsed: <span id="timeelapsed">0</span>s</div>
+      </div>
+    </nav>
+
+    <div class="game-start">
+      <h1 id="game-start-title">Welcome to Plants vs Zombies! 🌻 🧟‍♂️</h1>
+      <button class="btn btn-primary" id="start-btn">Ready for zombies</button>
+    </div>
+
+    <div class="game-over">
+      <h1>GAME OVER! ☠️</h1>
+      <button class="btn btn-primary" id="restart-btn">Restart!</button>
+    </div>
+
+    <div id="farm">
+      <div class="lane lane-one">
+        <div class="grid-item" data-index="0"></div>
+        <div class="grid-item" data-index="0"></div>
+        <div class="grid-item" data-index="0"></div>
+        <div class="grid-item" data-index="0"></div>
+        <div class="grid-item" data-index="0"></div>
+        <div class="grid-item" data-index="0"></div>
+        <div id="lane-one-spawn-spot"></div>
+      </div>
+      <div class="lane lane-two">
+        <div class="grid-item" data-index="1"></div>
+        <div class="grid-item" data-index="1"></div>
+        <div class="grid-item" data-index="1"></div>
+        <div class="grid-item" data-index="1"></div>
+        <div class="grid-item" data-index="1"></div>
+        <div class="grid-item" data-index="1"></div>
+        <div id="lane-two-spawn-spot"></div>
+      </div>
+      <div class="lane lne-three">
+        <div class="grid-item" data-index="2"></div>
+        <div class="grid-item" data-index="2"></div>
+        <div class="grid-item" data-index="2"></div>
+        <div class="grid-item" data-index="2"></div>
+        <div class="grid-item" data-index="2"></div>
+        <div class="grid-item" data-index="2"></div>
+        <div id="lane-three-spawn-spot"></div>
+      </div>
+      <div id="resources">
+        <div class="resource-item sunflower" id="sunflower"></div>
+
+        <div class="resource-item" id="upgrade">☀️ 50 to upgrade bullets</div>
+        <div class="current-bullet-damage">
+          <span>Your bullet damage:</span>
+          <span id="bullet-damage">10</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="game.js" async defer></script>
+  </body>
+</html>

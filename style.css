@@ -1,0 +1,253 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Roboto:ital,wght@0,100;0,400;0,500;1,300&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Oxygen", sans-serif;
+}
+
+#game-start-title {
+  font-size: 50px;
+}
+
+#start-btn {
+  margin-top: 30px;
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+body {
+  padding: 0px;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+}
+
+.status {
+  width: 1000px;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+}
+
+.current-bullet-damage {
+  background-color: black;
+  padding: 10px;
+  color: white;
+}
+
+#upgrade {
+  background-color: rgb(75, 72, 235);
+  color: rgb(255, 255, 255);
+  padding: 10px 15px;
+  font-size: 20px;
+  border: 2px solid black;
+  transition: all ease 0.5s;
+  border-radius: 20px;
+}
+
+#upgrade:hover {
+  background-color: rgb(118, 116, 230);
+}
+
+#suncount {
+  color: rgb(255, 196, 0);
+  font-weight: bold;
+}
+
+#logo {
+  font-weight: bold;
+  margin: 0 20px;
+  font-size: 20px;
+}
+
+nav {
+  background-color: rgb(179, 255, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.game-start {
+  height: 90%;
+  width: 100%;
+  background-color: rgb(22, 20, 20);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-over {
+  height: 90%;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  flex-direction: column;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+#farm {
+  background-color: green;
+  height: 92%;
+  padding: 10px;
+  grid-row-gap: 5px;
+  overflow: hidden;
+  display: none;
+}
+
+.home {
+  width: 1px;
+  height: 490px;
+  background-color: rgba(44, 39, 39, 0);
+  position: absolute;
+  z-index: 5000;
+}
+
+.lane {
+  border: 1px solid rgb(0, 0, 0);
+  display: flex;
+  justify-content: space-around;
+  height: 160px;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.grid-item {
+  border: 1px solid rgba(34, 34, 34, 0.1);
+  width: 16%;
+  transition: all ease 0.2s;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-item:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#resources {
+  background: rgb(8, 8, 8);
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+  align-items: center;
+}
+
+.resource-item {
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all ease 0.3s;
+  padding: 5px;
+  text-align: center;
+}
+
+.resource-item:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.spawnedZombie {
+  position: absolute;
+}
+
+.sunflower {
+  width: 99px;
+  height: 120px;
+  z-index: 1000;
+  background-color: yellow;
+  position: relative;
+  border-radius: 20px;
+  background-image: url("./images/sunflower.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pea {
+  width: 150px;
+  height: 120px;
+  z-index: 1000;
+  background-color: yellow;
+  position: relative;
+  border-radius: 20px;
+  background-image: url("./pea.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.bullet {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+  z-index: 3000;
+  position: absolute;
+  background-color: rgb(219, 215, 5);
+}
+
+#steroid {
+  width: 120px;
+  height: 120px;
+  z-index: 1000;
+  background-color: rgb(129, 68, 199);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#steroid:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.potato {
+  width: 90px;
+  height: 120px;
+  z-index: 1000;
+  background-color: rgb(184, 124, 56);
+}
+
+#zombie {
+  width: 120px;
+  height: 120px;
+  z-index: 1000;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border-radius: 20px;
+}
+
+#spawnedZombie {
+  width: 70px;
+  height: 100px;
+  z-index: 2000;
+  background-color: rgb(27, 25, 25);
+  color: white;
+  position: absolute;
+  top: -25px;
+}
+
+#lane-one-spawn-spot,
+#lane-two-spawn-spot,
+#lane-three-spawn-spot {
+  position: absolute;
+  right: -10px;
+  top: 30px;
+}
