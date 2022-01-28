@@ -18,7 +18,7 @@ let bulletsArray = [[], [], []];
 let peaBulletsArray = [[], [], []];
 let homeArray = [];
 let timeElapsed = 0;
-let SPAWN_INTERVAL = 10500;
+let SPAWN_INTERVAL
 let ZOMBIE_HEALTH = 60;
 let BULLET_SPAWN_INTERVAL = 2200;
 let VELOCITY = 0.5;
@@ -46,12 +46,12 @@ const $gameStartScreen = $(".game-start");
 const $gameOverScreen = $(".game-over");
 const $upgradeBtn = $("#upgrade");
 const $bullet = $(".bullet");
-const $bulletDamage = $("#bullet-damage")
+const $bulletDamage = $("#bullet-damage");
 
 // update Sun Energy Status
 const updateSunEnergy = () => {
   $sunCount.text(sunEnergy);
-}
+};
 
 // Zombie | Constructor
 function Zombie($row) {
@@ -74,22 +74,27 @@ function Zombie($row) {
   };
 
   const zombieInit = () => {
-    if (timeElapsed > 60 && timeElapsed < 81) {
-      this.health = 80;
+if (timeElapsed < 60 ) {
+      this.health = 60;
+      SPAWN_INTERVAL = 8000;
+      console.log(SPAWN_INTERVAL);
+    }
+
+    if (timeElapsed >= 60 && timeElapsed < 81) {
       SPAWN_INTERVAL = 5000;
       ZOMBIE_HEALTH = 100;
       console.log(SPAWN_INTERVAL);
     }
 
     if (timeElapsed > 80 && timeElapsed < 101) {
-      SPAWN_INTERVAL = 3000;
+      SPAWN_INTERVAL = 3500;
       ZOMBIE_HEALTH = 140;
       console.log(ZOMBIE_HEALTH);
     }
 
     if (timeElapsed > 100) {
       SPAWN_INTERVAL = 2000;
-      ZOMBIE_HEALTH = 160;
+      ZOMBIE_HEALTH = 200;
       console.log(ZOMBIE_HEALTH);
     }
 
@@ -215,54 +220,6 @@ function SunFlower($selectedGrid, rowIndex) {
   sunFlowerInit();
 }
 
-// Pea | Constructor
-// function Pea($selectedGrid, rowIndex) {
-//   this.$elem = null;
-//   this.health = 20;
-//   this.damage = 10;
-//   this.position = { x: 0, y: 0 };
-//   this.bulletInterval = null;
-
-//   this.startShooting = function () {
-//     peaBulletsArray[rowIndex].push(new Bullet(this.$elem));
-//     this.bulletInterval = setInterval(() => {
-//       peaBulletsArray[rowIndex].push(new Bullet(this.$elem));
-//     }, BULLET_SPAWN_INTERVAL);
-//   };
-
-//   this.stopShooting = function () {
-//     clearInterval(this.bulletInterval);
-//   };
-
-//   this.removeSelf = function () {
-//     this.stopShooting();
-//     this.$elem.remove();
-//     peaCount--;
-//     $peaCount.text(peaCount);
-//   };
-
-//   const peaInit = () => {
-//     // Increase sunflower and sun energy count
-//     peaCount++;
-//     sunEnergy -= 20;
-//     $peaCount.text(sunFlowerCount);
-//     $sunCount.text(sunEnergy.toFixed(2));
-
-//     // Append sunflower to game screen
-//     this.$elem = $(
-//       `<div class="resource-item pea"></div>`
-//     );
-//     this.$elem.appendTo($selectedGrid).on("click", (e) => {
-//       e.stopPropagation();
-//     });
-
-//     if (spawnLoop) {
-//       this.startShooting();
-//     }
-//   };
-
-//   peaInit();
-// }
 
 // Potato | Constructor
 function Potato($selectedGrid) {
@@ -495,23 +452,22 @@ const startSpawn = () => {
 
 // Upgrade Bullet Damage
 const updateBulletDamageStatus = () => {
-  $bulletDamage.text(BULLET_DAMAGE)
-}
+  $bulletDamage.text(BULLET_DAMAGE);
+};
 
 const upgradeBullet = () => {
   if (sunEnergy >= 50) {
     BULLET_DAMAGE += 5;
     sunEnergy -= 50;
-    updateSunEnergy()
+    updateSunEnergy();
     console.log("Bullet upgraded");
-    updateBulletDamageStatus()
-    ZOMBIE_HEALTH +=50
-
+    updateBulletDamageStatus();
+    ZOMBIE_HEALTH += 50;
   } else {
     console.log("You do not have enough sun energy");
-    $upgradeBtn.css('border', '2px solid red')
+    $upgradeBtn.css("border", "2px solid red");
     setTimeout(() => {
-       $upgradeBtn.css('border', '2px solid black')
+      $upgradeBtn.css("border", "2px solid black");
     }, 2000);
   }
 };
@@ -522,21 +478,28 @@ const startSunGeneration = () => {
     sunLoop = setInterval(() => {
       if (timeElapsed < 60) {
         sunEnergy = sunEnergy + 0.5 + (sunFlowerCount * 10) / 100;
+ SPAWN_INTERVAL = 8000;
         $sunCount.text(sunEnergy.toFixed(2));
       }
 
       if (timeElapsed > 60 && timeElapsed < 81) {
-        sunEnergy = sunEnergy + 0.8 + (sunFlowerCount * 10) / 100;
+        sunEnergy = sunEnergy + 0.5 + (sunFlowerCount * 10) / 100;
+        SPAWN_INTERVAL = 5000;
+        console.log(SPAWN_INTERVAL);
         $sunCount.text(sunEnergy.toFixed(2));
       }
 
       if (timeElapsed > 80 && timeElapsed < 101) {
-        sunEnergy = sunEnergy + 2 + (sunFlowerCount * 10) / 100;
+        sunEnergy = sunEnergy + 1.5 + (sunFlowerCount * 10) / 100;
+        SPAWN_INTERVAL = 3000;
+        console.log(SPAWN_INTERVAL);
         $sunCount.text(sunEnergy.toFixed(2));
       }
 
       if (timeElapsed > 100) {
-        sunEnergy = sunEnergy + 5 + (sunFlowerCount * 10) / 100;
+        sunEnergy = sunEnergy + 2.5 + (sunFlowerCount * 10) / 100;
+        SPAWN_INTERVAL =  1000;
+        console.log(SPAWN_INTERVAL);
         $sunCount.text(sunEnergy.toFixed(2));
       }
     }, 1000);
